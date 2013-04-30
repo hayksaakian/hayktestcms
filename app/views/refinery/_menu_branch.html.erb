@@ -19,7 +19,7 @@
     <% if menu_branch.ancestors.length == 0 %>
         <ul class='dropdown-menu'>
     <% end %>
-      <%= render :partial => '/refinery/bootstrap/menu_branch', :collection => children,
+      <%= render :partial => '/refinery/menu_branch', :collection => children,
                  :locals => {
                    :apply_css => local_assigns[:apply_css],
                    :hide_children => !!hide_children,

@@ -1,0 +1,62 @@
+<div class="row-fluid">
+	<% if !@page.parent_id.nil? || @page.children.any? %>
+		<% show_sidebar = true %>
+	<% end %>
+	<% if show_sidebar %>
+		<div class='span3'>
+			<!-- this sidebar things could be modularized -->
+			<% if !@page.parent_id.nil? %>
+				<!-- adjacent pages -->
+				<div id='siblings' class='row-fluid'>
+					<div class='well' style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header"><%= link_to @page.parent.title, @page.parent %></li>
+							<% @page.self_and_siblings.each do |child| %>
+								<% if child.live? %>
+									<li class="<%= 'active' if child == @page %>"><%= link_to child.title, child.url %></li>
+								<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			<% end %>
+			<% if @page.children.any? %>
+				<!-- child pages -->
+				<div id='children' class='row-fluid'>
+					<div class='well' style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header"><%= link_to @page.title, '#' %></li>
+							<% @page.children.each do |child| %>
+								<% if child.live? %>
+									<li><%= link_to child.title, child.url %></li>
+								<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			<% end %>
+			<% if !@page.parent_id.nil? && @page.parent.siblings.any? %>
+				<!-- parent's siblings -->
+				<div id='parent_siblings' class='row-fluid'>
+					<div class='well' style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<% if !@page.parent.parent_id.nil? %>
+								<li class="nav-header"><%= link_to @page.parent.parent.title, @page.parent.parent %></li>
+							<% end %>
+							<% @page.parent.self_and_siblings.each do |child| %>
+								<% if child.live? %>
+									<li><%= link_to child.title, child.url %></li>
+								<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+	<div class="<%= show_sidebar ? 'span9' : 'span12' %>">
+		<div class="row-fluid">
+			<%= render '/refinery/content_page' %>
+		</div>
+	</div>
+</div>
