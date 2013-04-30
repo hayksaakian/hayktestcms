@@ -1,10 +1,12 @@
 GIT
   remote: git://github.com/ghoppe/refinerycms-bootstrap.git
-  revision: 727c88f26c8135af6283a2ad28c084157dddf43a
+  revision: eefc8b1a660be15fb689cc1ffa6af765afb3a5eb
+  branch: 2-0-stable
   specs:
-    refinerycms-bootstrap (2.1.0.dev)
-      bootstrap-sass (~> 2.3.1.0)
-      sass-rails (~> 3.2)
+    refinerycms-bootstrap (2.0.4)
+      bootstrap-sass (~> 2.0.3)
+      refinerycms-core (~> 2.0.4)
+      refinerycms-images (~> 2.0.4)
 
 GIT
   remote: git://github.com/refinery/refinerycms.git
@@ -89,8 +91,7 @@ GEM
       activerecord (>= 3.0.0)
     babosa (0.3.10)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.3.1.1)
-      sass (~> 3.2)
+    bootstrap-sass (2.0.4.2)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)

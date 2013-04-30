@@ -25,7 +25,7 @@ group :assets do
 	# gem "therubyracer", :require => 'v8'
 	# gem "less-rails"
 	# gem "twitter-bootstrap-rails"
-	gem 'refinerycms-bootstrap', :git => 'git://github.com/ghoppe/refinerycms-bootstrap.git'
+	gem 'refinerycms-bootstrap', :git => 'git://github.com/ghoppe/refinerycms-bootstrap.git', :branch => '2-0-stable'
 end
 
 gem 'jquery-rails', '~> 2.0.0'
