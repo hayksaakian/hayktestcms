@@ -5,6 +5,7 @@
   <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
   <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
   <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
   <%= yield :meta %>
 
@@ -14,4 +15,5 @@
   <%= render '/refinery/google_analytics' %>
 
   <%= javascript_include_tag 'modernizr-min' %>
+
 </head>
