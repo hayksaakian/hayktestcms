@@ -1,0 +1,56 @@
+<aside id="comments">
+  <hr class="solid">
+  <% comments = @post.comments.approved %>
+  <h4 class="title grey"><%= t('title', :scope => 'refinery.blog.posts.show.comments') %> <%= comments.any? ? "(#{comments.count})" : 'be the first!'  %></h4>
+  <div class="row-fluid margin-top-10">
+    <% if (comments).any? %>
+      <ul class="media-list">
+        <%= render :partial => "comment", :collection => comments %>
+      </ul>
+    <% else %>
+      <p>
+        <%= t('none', :scope => 'refinery.blog.shared.comments') %>.
+      </p>
+    <% end %>
+  </div>
+  
+  <% flash.each do |key, value| %>
+    <div id='flash' class="flash flash_<%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
+  <hr class="solid">
+  <div class='row-fluid'>
+    <div class='span12'>
+  <h4 class="title grey"><%= t('add', :scope => 'refinery.blog.posts.show.comments') %></h4>
+  <%= form_for [refinery, :blog, @comment], :html => {:class => 'form-horizontal'} do |f| %>
+    <%= render :partial => "/refinery/admin/error_messages",
+               :locals => {
+                 :object => f.object,
+                 :include_object_name => true
+               } %>
+    <div class='control-group'>
+      <%= f.label :name, :class => 'control-label' %>
+      <div class='controls'>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class='control-group'>
+      <%= f.label :email, :class => 'control-label' %>
+      <div class='controls'>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class='control-group'>
+      <%= f.label :message, :class => 'control-label' %>
+      <div class='controls'>
+        <%= f.text_area :message, :class => 'input-large', :rows => '5' %>
+      </div>
+    </div>
+    <div class='field form-actions'>
+      <%= f.submit t('submit', :scope => 'refinery.blog.posts.show'), :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+    </div>
+  </div>
+</aside>
