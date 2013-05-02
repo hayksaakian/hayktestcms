@@ -6,13 +6,13 @@
   <body>
     <%= site_bar -%>
     <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <header id="header">
+    <header id="header" class='container-fluid'>
       <%= render '/refinery/header' -%>
     </header>
     <div id="page" class="container">
       <%= yield %>
     </div>
-    <footer class="container">
+    <footer class="container-fluid">
       <%= render '/refinery/footer' -%>
     </footer>
     <%= render '/refinery/javascripts' %>
