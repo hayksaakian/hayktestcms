@@ -30,7 +30,7 @@
 // Example:
 // @linkColor: #ff0000;
 
-@testColor: #ff0000;
+/*@testColor: #ff0000;*/
 section#body_content {
   #grid > .fluid > .row-fluid;
 	h1#body_content_title {
@@ -82,6 +82,21 @@ input[name="commit"] {
 			.btn-primary;
 		}
 	}
+}
+
+.cutoffoverflow {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.cutoffoverflow:hover, .cutoffoverflow:active {
+	white-space: normal;
+	overflow: visible;
+}
+
+.nomargintop {
+	margin-top: 1px;
 }
 
 /*

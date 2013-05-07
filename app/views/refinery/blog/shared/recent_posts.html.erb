@@ -1,0 +1,26 @@
+<h4 class="title"><i class="icon-comments"></i><a href="<%= blog_root_path %>">Latest From Blog</a></h4>
+<ul class='media-list'>
+<% Refinery::Blog::Post.recent(3).each do |blog_post| %>
+	<li class="media nomargintop">
+		<!-- if we implement author photos. and we SHOULD. -->
+		<!-- <a class="pull-left" href="blog.html">
+		    <img class="media-object img-polaroid" src="assets/img/blog/thumb1.jpg">
+		</a> -->
+		<div class="media-body">
+      <h5 class='media-heading cutoffoverflow'><%= link_to blog_post.title, refinery.blog_post_path(blog_post) %></h5>
+    	<%= 
+    	# THIS IS FUGLY AS HELL. TRY AND USE THE REAL HELPER
+    	# TODO FIX
+    	if blog_post.respond_to?(:custom_teaser) && blog_post.custom_teaser.present?
+         blog_post.custom_teaser.html_safe
+      else
+       truncate(blog_post.body, {
+         :length => Refinery::Blog.post_teaser_length/3,
+         :preserve_html_tags => true
+        }).html_safe
+      end
+    	 %>
+		</div>
+	</li>
+<% end %>
+</ul>

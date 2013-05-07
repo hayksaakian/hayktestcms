@@ -29,10 +29,12 @@
         </div>
       </div>
     </div>
-    <div id='page' class='container'>
-      <%= yield %>
+    <div id='content-body'>
+      <div id='page' class='container'>
+        <%= yield %>
+      </div>
     </div>
-    <footer class="container">
+    <footer>
       <%= render '/refinery/footer' -%>
     </footer>
     <%= render '/refinery/javascripts' %>
