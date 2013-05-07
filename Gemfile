@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '~> 3.2.13'
 
+gem 'thin'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -29,6 +31,8 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.0.0'
+
+gem 'google-webfonts-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

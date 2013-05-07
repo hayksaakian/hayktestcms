@@ -1,4 +1,5 @@
-<div class='row-fluid'>
+<div class='blog'>
+  <div class='row-fluid'>
   <% content_for :body_content_left do %>
     <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
     <% if @posts.any? %>
@@ -19,9 +20,8 @@
     <%= render :partial => '/refinery/blog/shared/body_content_right' %>
   </div>
 </div>
-whahh....
 <div class='row-fluid'>
   <%= render :partial => "/refinery/content_page" %>
 </div>
-....tttttt is this
 <% content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend') %>
+</div>

@@ -10,6 +10,8 @@
  *
  *= require formatting
  *= require theme
+ *= require bootstrap_and_overrides
+ *= require style
  *= require_self
  *= require_tree .
  */
