@@ -1,4 +1,5 @@
 <% if @tags.any? %>
+  <hr class='dashed'>
   <h4 class='title grey'><%= t('.title') %></h4>
   <nav id='tags'>
     <% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
