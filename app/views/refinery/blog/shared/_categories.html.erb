@@ -1,5 +1,5 @@
 <% if @categories.any? %>
-  <h3><%= t('.title') %></h3>
+  <h4 class='title grey'><%= t('.title') %></h4>
   <ul id='categories'>
     <% @categories.each do |category| %>
       <li<%= " class='selected'" if @category.present? and @category.id == category.id %>>
