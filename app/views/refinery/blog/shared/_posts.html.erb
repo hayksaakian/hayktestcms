@@ -16,7 +16,7 @@
 			  	<%= image_tag avatar_url(blog_post.author.email, :size => "50x50"), :alt => blog_post.author, :class => 'avatar media-object img-polaroid' %>
           <small><%= t('time_ago', :scope => 'refinery.blog.posts.comments', :time => time_ago_in_words(blog_post.published_at)) %></small>
 			  <% end %>
-        <div class="media-heading"><small><%= t('by', :scope => 'refinery.blog.posts.comments', :who => blog_post.author.to_s) %></small></div>
+        <div class="media-heading"><%= content_tag(:small, "#{t('by', :scope => 'refinery.blog.posts.show')} #{blog_post.author.username}", :class => "blog_author author") if blog_post.author.present? %></div>
         <div class='media-body'><%= link_to blog_post.title, refinery.blog_post_path(blog_post) %></div>
       </li>
     <% end %>
