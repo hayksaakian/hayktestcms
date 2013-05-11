@@ -14,7 +14,12 @@ This is the refinery/blog/posts/tagged.html.erb page!
   <% end %>
 <% end %>
 
-<%= render :partial => '/refinery/blog/shared/body_content_right' %>
-
-<%= render :partial => "/refinery/content_page" %>
-<% content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend') %>
+<div class="blog">
+	<div class="row-fluid">
+		<%= render :partial => '/refinery/blog/shared/body_content_right' %>
+	</div>
+	<div class="row-fluid">
+		<%= render :partial => "/refinery/content_page" %>
+	</div>
+	<% content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend') %>
+</div>

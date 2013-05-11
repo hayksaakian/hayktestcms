@@ -29,6 +29,14 @@
         <% end %>
       </aside>
     <% end %>
+    <% if (tags = @post.tags).any? %>
+      <div class='tags'>
+        <i class="icon-tags"></i>
+        <% tag_cloud(tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+          <span class='label label-info1'><%= link_to tag.name, refinery.blog_tagged_posts_path(tag.id, tag.name.parameterize), :class => css_class %></span>
+        <% end %>
+      </div>
+    <% end %>
     <% if (comments = @post.comments.approved).any? %>
       <div class="comments">
         <i class="icon-comments"></i> <a href="#comments"><%= comments.any? ? "(#{comments.count})" : 'be the first!'  %> <%= t('title', :scope => 'refinery.blog.posts.show.comments') %></a>           
@@ -36,6 +44,7 @@
     <% end %>
   </section>
 </div>
+
 <div class='span9'>
   <% flash.each do |key, value| %>
    <div id='flash' class="flash flash_<%= key %>">

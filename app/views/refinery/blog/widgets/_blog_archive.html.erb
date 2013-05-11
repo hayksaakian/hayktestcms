@@ -1,0 +1,11 @@
+<section id="blog_archive_widget">
+  <hr class='dashed'>
+  <h4 class="title grey"><%= t('archives', :scope => 'refinery.blog.shared') %></h4>
+  <nav id="archives">
+    <ul class="media-list">
+      <% links.each do |link| %>
+        <li class="media-heading"><%= link %></li>
+      <% end %>
+    </ul>
+  </nav>
+</section>

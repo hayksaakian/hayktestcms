@@ -1,7 +1,7 @@
 <aside id="comments">
   <hr class="solid">
   <% comments = @post.comments.approved %>
-  <h4 class="title grey"><%= t('title', :scope => 'refinery.blog.posts.show.comments') %> <%= comments.any? ? "(#{comments.count})" : 'be the first!'  %></h4>
+  <h4 class="title grey"><%= t('title', :scope => 'refinery.blog.posts.show.comments') %> <%= comments.any? ? "(#{comments.count})" : ' - be the first!'  %></h4>
   <div class="row-fluid margin-top-10">
     <% if (comments).any? %>
       <ul class="media-list">

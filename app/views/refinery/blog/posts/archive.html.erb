@@ -10,8 +10,12 @@
     <p><%= t('.no_blog_articles_posted', :date => @archive_date.strftime('%B %Y')) %></p>
   <% end %>
 <% end %>
-
-<%= render :partial => '/refinery/blog/shared/body_content_right' %>
-
-<%= render :partial => "/refinery/content_page" %>
+<div class="blog">
+	<div class="row-fluid">
+		<%= render :partial => '/refinery/blog/shared/body_content_right' %>
+	</div>
+	<div class="row-fluid">
+		<%= render :partial => "/refinery/content_page" %>
+	</div>
 <% content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend') %>
+</div>
