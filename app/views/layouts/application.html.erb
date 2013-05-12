@@ -12,7 +12,7 @@
       <div class='container'>
         <div class='row-fluid'>
           <div class='span9'>
-            <h3 class='title'><%= @page.title %></h3>
+            <h3 class='title'><%= content_for?(:page_title) ? yield(:page_title) : @page.title %></h3>
           </div>
           <div class='span3'>
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">

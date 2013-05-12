@@ -49,9 +49,10 @@
    </div>
   <% end %>
   <article id="blog_post">
-    <header>
-      <h4 class='title grey'><%= @post.title %></h4>
-    </header>
+    <% content_for :page_title, @post.title %>
+    <!-- <header>
+      <h4 class='title grey'></h4>
+    </header> -->
     <%= @post.body.html_safe %>
 
     <% if Refinery::Blog::Post::ShareThis.enabled? %>
