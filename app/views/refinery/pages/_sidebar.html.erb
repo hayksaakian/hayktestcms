@@ -9,7 +9,6 @@
 	<li class='divider'></li>
 	<% (topmost_parent.children).each do |child| %>
 		<% if child.live? && !child.home? %>
-		<%#= TODO a smarter way to make this avoid showing top level navigation... %>
 			<%
 				def shown_gc(child)
 					if child.children.any?
