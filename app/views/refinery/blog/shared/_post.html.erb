@@ -13,12 +13,30 @@
           <div class="clearfix"></div>
         </div>
       </div>
-      <%= content_tag(:div, "#{t('by', :scope => 'refinery.blog.posts.show')} #{post.author.username}", :class => "blog_author author") if post.author.present? %>
+      <% if post.author.present? %>
+        <% 
+        # TODO MOVE TO A BETTER PLACE
+        # THIS IS BAD CONVENTION.
+        def avatar_url(email, options = {:size => 60})
+          require 'digest/md5'
+          "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s.strip.downcase)}?s=#{options[:size]}.jpg"
+        end
+        %>
+        <div class="blog_auhtor author media">
+          <%= "#{t('by', :scope => 'refinery.blog.posts.show')} #{post.author.username}" %>
+          <%= link_to refinery.blog_post_path(post), :class => "pull-right" do %>
+            <%= image_tag avatar_url(post.author.email, :size => "50x50"), :alt => post.author, :class => 'avatar media-object img-polaroid' %>
+          <% end %>
+        </div>
+      <% end %>
       <% if (categories = post.categories).any? %>
-        <aside class='filed_in'>
+        <div class='filed_in tags'>
+          <i class="icon-folder-open"></i>
           <%= t('filed_in', :scope => 'refinery.blog.posts.show') %>
-          <%=raw categories.collect { |category| link_to category.title, refinery.blog_category_path(category) }.to_sentence %>
-        </aside>
+          <% categories.collect do |category| %>
+            <span class='label label-info'><%= link_to category.title, refinery.blog_category_path(category) %></span>
+          <% end %>
+        </div>
       <% end %>
       <% if (tags = post.tags).any? %>
         <aside class='tags'>

@@ -105,7 +105,7 @@ h1.title, h2.title, h3.title, h4.title,  h5.title {text-shadow:0 1px 1px #fff; f
 .navbar {margin-top: 10px !important;}
 .navbar, 
 .navbar-inner, 
-.nav,
+//.nav,
 .navbar-inverse {
 	float: right;
 	background: none !important;
@@ -142,7 +142,11 @@ h1.title, h2.title, h3.title, h4.title,  h5.title {text-shadow:0 1px 1px #fff; f
   	color: rgb(34, 34, 34);
 }
 
-.nav-list {margin-left: 15px; float: left;}
+.nav-list {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
 .nav-list li.active a,  .nav-list li a:hover{ 
 	-moz-border-radius:6px !important;
 	-webkit-border-radius:6px !important;

@@ -43,14 +43,22 @@ section#body_content {
 	section#side_body {
     #grid > .fluid > .span(3);
 	}*/
-	section#body_content_left {
+	section#body_content_left,
+	section#body {
     #grid > .fluid > .span(9);
     float: left;
 	}
-	section#body_content_right {
+	section#body_content_right,
+	section#side_body {
     #grid > .fluid > .span(3);
     float: right;
 	}
+}
+
+section#body_content.no_body_content_right section#body_content_left,
+section#body_content.no_side_body section#body {
+  #grid > .fluid > .span(12);
+  float: left;
 }
 
 input[name="commit"] {
@@ -97,6 +105,10 @@ input[name="commit"] {
 
 .nomargintop {
 	margin-top: 1px;
+}
+
+#sidebar .leftindent {
+	margin-left: 15px;
 }
 
 /*

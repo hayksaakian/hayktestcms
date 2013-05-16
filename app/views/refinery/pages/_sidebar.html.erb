@@ -1,0 +1,43 @@
+<% 
+	topmost_parent = @page
+	while topmost_parent.parent != nil
+		topmost_parent = topmost_parent.parent
+	end
+ %>
+<ul class="nav nav-list">
+	<li class='nav-header'><h4><%= topmost_parent.title %></h4></li>
+	<li class='divider'></li>
+	<% (topmost_parent.children).each do |child| %>
+		<% if child.live? && !child.home? %>
+		<%#= TODO a smarter way to make this avoid showing top level navigation... %>
+			<%
+				def shown_gc(child)
+					if child.children.any?
+						child.children.each do |gc|
+							if gc.in_menu?
+								return true
+								break
+							end
+						end
+					else
+						return false
+					end
+				end
+			%>
+			<li class="<%= 'active'.html_safe if child == @page %>">
+				<%= link_to child.url, :class => '' do %>
+					<% if child == topmost_parent %>
+						<h4><%= child.title %></h4>
+					<% else %>
+						<%= child.title %>
+					<% end %>
+				<% end %>
+
+				<% if shown_gc(child) %>
+					<%= render :partial => '/refinery/pages/submenu', :locals => {:page => child.children.first	} %>
+				</li><li class='divider'>
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

@@ -1,0 +1,40 @@
+<ul class="nav nav-list">
+	<% (page.self_and_siblings).each do |child| %>
+		<% if child.live? && !child.home? %>
+		<%#= TODO a smarter way to make this avoid showing top level navigation... %>
+			<%
+				def shown_gc(child)
+					if child.children.any?
+						child.children.each do |gc|
+							if gc.in_menu?
+								return true
+								break
+							end
+						end
+					else
+						return false
+					end
+				end
+			%>
+			<li class="<%= 'active'.html_safe if child == @page %>">
+				<%= link_to child.url, :class => '' do %>
+					<% if shown_gc(child) %>
+						<% if child.parent_id? %>
+							<!-- <i class="icon-chevron-down"></i>  -->
+							<%= child.title %>
+						<% else %>
+							<%= child.title %>
+						<% end %>
+					<% else %>
+						<!-- <i class="icon-chevron-right"></i>  -->
+						<%= child.title %>
+					<% end %>
+				<% end %>
+
+				<% if shown_gc(child) %>
+					<%= render :partial => '/refinery/pages/submenu', :locals => {:page => child.children.first	} %>
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

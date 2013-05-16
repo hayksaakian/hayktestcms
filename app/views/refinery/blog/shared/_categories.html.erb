@@ -1,10 +1,12 @@
 <% if @categories.any? %>
   <hr class='dashed'>
-  <h4 class='title grey'><%= t('.title') %></h4>
-  <ul id='categories'>
+  <h4 class='title grey'><i class="icon-folder-open"></i> <%= t('.title') %></h4>
+  <ul id='categories' class="unstyled">
     <% @categories.each do |category| %>
       <li<%= " class='selected'" if @category.present? and @category.id == category.id %>>
-        <%= link_to "#{category.title} (#{category.post_count})", refinery.blog_category_path(category) %>
+        <%= link_to refinery.blog_category_path(category) do %>
+        	<span class="label label-info"><%= "#{category.title} (#{category.post_count})" %></span>
+        <% end %>
       </li>
     <% end %>
   </ul>
