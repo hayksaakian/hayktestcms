@@ -46,6 +46,9 @@ Refinery::Core.configure do |config|
 
   # Register extra javascript for backend
   # config.register_javascript "prototype-rails"
+  
+  # to stop auto changing i tags to em
+  config.register_javascript "override-wymeditor-for-bootstrap"
 
   # Register extra stylesheet for backend (optional options)
   # config.register_stylesheet "custom", :media => 'screen'
