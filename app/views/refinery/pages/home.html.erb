@@ -1,6 +1,6 @@
 <% if !@page.precontent.blank? %>
 	<% content_for :precontent do %>
-
+		<%=raw @page.precontent %>
 	<% end %>
 <% end %>
 <%= render_content_page(@page, {
