@@ -8,6 +8,9 @@
     <header id="header">
       <%= render '/refinery/header' -%>
     </header>
+    <% if content_for?(:precontent) %>
+      <%= yield(:precontent) %>
+    <% else %>
     <div id='content-title'>
       <div class='container'>
         <div class='row-fluid'>
@@ -27,6 +30,7 @@
         </div>
       </div>
     </div>
+    <% end %>
     <div id='content-body'>
       <div id='page' class='container'>
         <%= yield %>
