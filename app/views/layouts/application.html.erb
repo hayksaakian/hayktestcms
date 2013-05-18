@@ -8,8 +8,8 @@
     <header id="header">
       <%= render '/refinery/header' -%>
     </header>
-    <% if content_for?(:precontent) %>
-      <%= yield(:precontent) %>
+    <% if @page && !@page.content_for(:precontent).blank? %>
+      <%= raw @page.content_for(:precontent) %>
     <% else %>
     <div id='content-title'>
       <div class='container'>
