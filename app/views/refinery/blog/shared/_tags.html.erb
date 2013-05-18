@@ -5,10 +5,7 @@
     <% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
 	    <%= link_to refinery.blog_tagged_posts_path(tag.id, tag.name.parameterize), :class => css_class do %>
 	      <span class='label'>
-	 		   	<%= "#{tag.name}" %>
-		      <span class='badge'>
-			      <%= "#{tag.count}" %>
-		      </span>
+	 		   	<%= "#{tag.name} (#{tag.count})" %>
 	      </span>
       <% end %>
     <% end %>
