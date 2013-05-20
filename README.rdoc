@@ -1,6 +1,11 @@
 todo:
 √ install page-images
 - broke in prod
+fixed with:
+  https://devcenter.heroku.com/articles/labs-user-env-compile
+  until 
+  https://github.com/refinery/refinerycms-page-images/issues/69
+  is resolved
 search
 set up a caching service
 
