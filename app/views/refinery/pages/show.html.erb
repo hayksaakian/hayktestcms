@@ -12,7 +12,7 @@
 		</div>
 	<% end %>
 	<div class="<%= show_sidebar ? 'span8' : 'span12' %>">
-		<%= render :partial => '/refinery/widgets/gallery', :page => @page %>
+		<%= render :partial => '/refinery/widgets/gallery', :locals => {:page => @page} %>
 		<%= render '/refinery/content_page' %>
 	</div>
 </div>
