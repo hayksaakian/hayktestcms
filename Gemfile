@@ -14,6 +14,7 @@ end
 # this is a no-no, use pg everywhere, not just prod
 group :production do
   gem 'pg'
+  gem 'fog'
 end
 # Gems used only for assets and not required
 # in production environments by default.
