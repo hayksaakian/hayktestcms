@@ -1,5 +1,5 @@
 todo:
-install page-images
+√ install page-images
 search
 set up a caching service
 
