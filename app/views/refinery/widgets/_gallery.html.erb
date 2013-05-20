@@ -1,11 +1,13 @@
 <% if page.images.any? %>
 	<div class='row-fluid'>
 		<div id="myCarousel" class="carousel slide">
-		  <ol class="carousel-indicators">
-		    <% page.images.count.times do |index| %>
-			    <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" <%= 'class="active"' if index == 0 %>></li>
-		    <% end %>
-		  </ol>
+	    <% if page.images.count > 1 %>
+			  <ol class="carousel-indicators">
+			    <% page.images.count.times do |index| %>
+				    <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" <%= 'class="active"' if index == 0 %>></li>
+			    <% end %>
+			  </ol>
+	    <% end %>
 		  <div class="carousel-inner">
 		    <% page.images.each_with_index do |image, index| %>
 			    <div class="<%= 'active ' if index == 0 %>item">
