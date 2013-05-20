@@ -1,15 +1,15 @@
 todo:
-move content over
-- services page
-set s3 keys
-- test file upload (dragonfly?)
 install page-images
-
 search
+set up a caching service
 
 done:
-home page (sortof)
-about page
+set s3 keys
+- test file upload (dragonfly?)
+move content over
+- services page
+- home page (sortof)
+- about page
 sidebar
 header
 
