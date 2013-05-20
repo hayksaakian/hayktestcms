@@ -1,7 +1,14 @@
 todo:
 move content over
+- services page
+set s3 keys
+- test file upload (dragonfly?)
+install page-images
+
+search
 
 done:
+home page (sortof)
 about page
 sidebar
 header
