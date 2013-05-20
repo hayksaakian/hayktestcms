@@ -22,7 +22,7 @@
           "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s.strip.downcase)}?s=#{options[:size]}.jpg"
         end
         %>
-        <div class="blog_auhtor author media">
+        <div class="blog_author author media">
           <%= "#{t('by', :scope => 'refinery.blog.posts.show')} #{post.author.username}" %>
           <%= link_to refinery.blog_post_path(post), :class => "pull-right" do %>
             <%= image_tag avatar_url(post.author.email, :size => "50x50"), :alt => post.author, :class => 'avatar media-object img-polaroid' %>

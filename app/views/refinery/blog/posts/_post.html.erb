@@ -11,7 +11,14 @@
         <div class="clearfix"></div>
       </div>
     </div>
-    <%= content_tag(:div, "#{t('by', :scope => 'refinery.blog.posts.show')} #{@post.author.username}", :class => "blog_author author") if @post.author.present? %>
+    <% if @post.author.present? %>
+      <div class="blog_author author media">
+        <%= "#{t('by', :scope => 'refinery.blog.posts.show')} #{@post.author.username}" %>
+        <%= link_to refinery.blog_post_path(@post), :class => "pull-right" do %>
+          <%= image_tag avatar_url(@post.author.email, :size => "50x50"), :alt => @post.author, :class => 'avatar media-object img-polaroid' %>
+        <% end %>
+      </div>
+    <% end %>
     <% if @post.source_url.present? %>
       <div class='blog_source'>
         <%= "#{t('source', :scope => 'refinery.blog.posts.show')}: " %>
@@ -19,12 +26,13 @@
       </div>
     <% end %>
     <% if (categories = @post.categories).any? %>
-      <aside class='filed_in'>
+      <div class='filed_in tags'>
+        <i class="icon-folder-open"></i>
         <%= t('filed_in', :scope => 'refinery.blog.posts.show') %>
-        <% categories.each_with_index do |category, index| %>
-          <%= link_to category.title, refinery.blog_category_path(category) -%><%= ',' if index < ((categories.length) - 1) %>
+        <% categories.collect do |category| %>
+          <span class='label label-info'><%= link_to category.title, refinery.blog_category_path(category) %></span>
         <% end %>
-      </aside>
+      </div>
     <% end %>
     <% if (tags = @post.tags).any? %>
       <div class='tags'>
@@ -53,6 +61,32 @@
     <!-- <header>
       <h4 class='title grey'></h4>
     </header> -->
+    <% if @post.images.any? %>
+<div class='row-fluid'>
+  <div id="myCarousel" class="carousel slide">
+    <ol class="carousel-indicators">
+      <% @post.images.count.times do |index| %>
+        <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" <%= 'class="active"' if index == 0 %>></li>
+      <% end %>
+    </ol>
+    <div class="carousel-inner">
+      <% @post.images.each_with_index do |image, index| %>
+        <div class="<%= 'active ' if index == 0 %>item">
+          <%= image_tag(image.thumbnail("600x350#c").url, :style => 'width: 100%') %>
+          <div class='carousel-caption'>
+            <h4><%=raw @post.caption_for_image_index(index) %>  <span class='pull-right'><%= link_to "See Larger Image", image.url %></span></h4>
+          </div>  
+        </div>
+      <% end %>
+    </div>
+    <% if @post.images.count > 1 %>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lt;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&gt;</a>
+    <% end %>
+  </div>
+</div>
+<% end %>
     <%= @post.body.html_safe %>
 
     <% if Refinery::Blog::Post::ShareThis.enabled? %>
