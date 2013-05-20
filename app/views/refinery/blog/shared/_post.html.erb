@@ -61,6 +61,7 @@
       <header>
         <h4 class='title grey'><%= link_to post.title, refinery.blog_post_path(post) %></h4>
       </header>
+      <%= render 'refinery/widgets/gallery', :page => post %>
       <section class='clearfix'>
         <% if blog_post_teaser_enabled? %>
           <%= blog_post_teaser(post) %>
@@ -68,8 +69,6 @@
           <%= post.body.html_safe %>
         <% end %>
       </section>
-
-
       <footer>
         <p>
           <%= link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post), :class => 'btn btn-primary' if blog_post_teaser_enabled? %>

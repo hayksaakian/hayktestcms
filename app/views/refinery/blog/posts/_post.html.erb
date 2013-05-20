@@ -12,6 +12,14 @@
       </div>
     </div>
     <% if @post.author.present? %>
+        <% 
+        # TODO MOVE TO A BETTER PLACE
+        # THIS IS BAD CONVENTION.
+        def avatar_url(email, options = {:size => 60})
+          require 'digest/md5'
+          "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s.strip.downcase)}?s=#{options[:size]}.jpg"
+        end
+        %>
       <div class="blog_author author media">
         <%= "#{t('by', :scope => 'refinery.blog.posts.show')} #{@post.author.username}" %>
         <%= link_to refinery.blog_post_path(@post), :class => "pull-right" do %>
@@ -61,32 +69,8 @@
     <!-- <header>
       <h4 class='title grey'></h4>
     </header> -->
-    <% if @post.images.any? %>
-<div class='row-fluid'>
-  <div id="myCarousel" class="carousel slide">
-    <ol class="carousel-indicators">
-      <% @post.images.count.times do |index| %>
-        <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" <%= 'class="active"' if index == 0 %>></li>
-      <% end %>
-    </ol>
-    <div class="carousel-inner">
-      <% @post.images.each_with_index do |image, index| %>
-        <div class="<%= 'active ' if index == 0 %>item">
-          <%= image_tag(image.thumbnail("600x350#c").url, :style => 'width: 100%') %>
-          <div class='carousel-caption'>
-            <h4><%=raw @post.caption_for_image_index(index) %>  <span class='pull-right'><%= link_to "See Larger Image", image.url %></span></h4>
-          </div>  
-        </div>
-      <% end %>
-    </div>
-    <% if @post.images.count > 1 %>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lt;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&gt;</a>
-    <% end %>
-  </div>
-</div>
-<% end %>
+
+    <%= render 'refinery/widgets/gallery', :page => @post %>
     <%= @post.body.html_safe %>
 
     <% if Refinery::Blog::Post::ShareThis.enabled? %>

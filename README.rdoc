@@ -1,4 +1,10 @@
 todo:
+search
+set up a caching service
+
+done:
+set s3 keys
+- test file upload (dragonfly?)
 √ install page-images
 - broke in prod
 fixed with:
@@ -6,12 +12,6 @@ fixed with:
   until 
   https://github.com/refinery/refinerycms-page-images/issues/69
   is resolved
-search
-set up a caching service
-
-done:
-set s3 keys
-- test file upload (dragonfly?)
 move content over
 - services page
 - home page (sortof)
