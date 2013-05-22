@@ -6,6 +6,7 @@
   <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
   <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
   <%= yield :meta %>
   <%= google_webfonts_init({google: ['Oswald', 'Open Sans', 'Quick Sand']}) %>
@@ -15,5 +16,9 @@
   <%= render '/refinery/google_analytics' %>
 
   <%= javascript_include_tag 'modernizr-min' %>
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/apple-touch-icon-144.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon-57.png">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
 
 </head>
