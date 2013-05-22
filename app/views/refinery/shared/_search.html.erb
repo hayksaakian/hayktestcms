@@ -1,0 +1,11 @@
+<%= form_tag refinery.search_path, :class => "form-inline" do -%>
+	<div class="input-append">
+	  <%= text_field_tag :query, {}, {:type => "search",
+       :placeholder => "Search for...", 
+       :value => (params[:query] if params[:query]),
+     	 :class => "input-medium"} %>
+	  <button class='btn btn-primary' type="submit">
+			<i class="icon-search"></i>
+		</button>
+  </div>
+<% end %>

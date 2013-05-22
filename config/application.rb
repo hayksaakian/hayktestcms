@@ -17,6 +17,9 @@ end
 
 module PianoPlus
   class Application < Rails::Application
+    config.to_prepare do
+      Refinery.searchable_models = [Refinery::Page, Refinery::Blog::Post, Refinery::Blog::Comment]
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

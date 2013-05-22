@@ -3,7 +3,7 @@
 		<% show_sidebar = true %>
 	<% end %>
 	<% if show_sidebar %>
-		<div class='span4 well well-small'>
+		<div class='span3 well well-small'>
 			<!-- this sidebar things could be modularized -->
 			<!-- adjacent pages -->
 			<div id='sidebar'>
@@ -11,7 +11,7 @@
 			</div>
 		</div>
 	<% end %>
-	<div class="<%= show_sidebar ? 'span8' : 'span12' %>">
+	<div class="<%= show_sidebar ? 'span9' : 'span12' %>">
 		<%= render :partial => '/refinery/widgets/gallery', :locals => {:page => @page} %>
 		<%= render '/refinery/content_page' %>
 	</div>
