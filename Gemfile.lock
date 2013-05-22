@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/refinery/refinerycms-search.git
+  revision: 3b7a2fc5eefae004ed485eb40ab13c97baa5d397
+  branch: 2-0-stable
+  specs:
+    refinerycms-search (2.0.0)
+      refinerycms-core (~> 2.0.4)
+
+GIT
   remote: git://github.com/refinery/refinerycms.git
   revision: b3a3255725171fd0b656e42d7e50797531ba53e9
   branch: 2-0-stable
@@ -268,6 +276,7 @@ DEPENDENCIES
   refinerycms-i18n (~> 2.0.0)
   refinerycms-inquiries (~> 2.0.0)
   refinerycms-page-images!
+  refinerycms-search (~> 2.0.0)!
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
