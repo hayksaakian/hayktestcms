@@ -1,0 +1,55 @@
+<% content_for :body do %>
+  <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
+
+  <div class='inquiries'>
+    <%= form_for [refinery, :inquiries, @inquiry] do |f| %>
+      <%= render :partial => "/refinery/admin/error_messages",
+                 :locals => {
+                   :object => @inquiry,
+                   :include_object_name => true
+                 } %>
+      <div class="field">
+        <%= f.required_label :name, :class => 'placeholder-fallback' %>
+        <%= f.text_field :name, :class => 'text', :required => 'required', :placeholder => t('name', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') %>
+      </div>
+      <div class="field">
+        <%= f.required_label :email, :class => 'placeholder-fallback' %>
+        <%= f.email_field :email, :class => 'text email', :required => 'required', :placeholder => t('email', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') %>
+      </div>
+      <div class="field">
+        <%= f.label :phone, :class => 'placeholder-fallback' %>
+        <%= f.text_field :phone, :class => 'text phone', :placeholder => t('phone', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') %>
+      </div>
+      <div class='field message_field'>
+        <%= f.required_label :message, :class => 'placeholder-fallback' %>
+        <%= f.text_area :message, :rows => 8, :required => 'required', :placeholder => t('message', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') %>
+      </div>
+      <div class="actions">
+        <%= f.submit t('.send') %>
+        <%= link_to t('.privacy_policy'), "/pages/privacy-policy", :id => "privacy_link" if Refinery::Inquiries.show_contact_privacy_link %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% content_for :side_body do %>
+  <%= raw @page.content_for(:side_body) if Refinery::Pages.default_parts.include?(:side_body) %>
+
+  <h4 class="title grey">Contact Info</h4>
+  <p><strong><%= Refinery::Core.site_name %></strong></p>
+  <p><%= ::Refinery::Setting.find_or_set(:contact_address, "505 106th Avenue Northeast Bellevue Washington 98004, USA") %></p>
+  <p>Phone: <a href="tel:<%= ::Refinery::Setting.find_or_set(:contact_phone, "206-458-9112") %>" class=""><%= ::Refinery::Setting.find_or_set(:contact_phone, "206-458-9112") %></a><br></p>
+  <p>Email: <a href="mailto:<%= ::Refinery::Setting.find_or_set(:contact_email, 'contact@skyrealre.com') %>" class=""><%= ::Refinery::Setting.find_or_set(:contact_email, 'contact@skyrealre.com') %></a></p>
+  <div class="clearfix">
+    <a href="<%= ::Refinery::Setting.find_or_set(:social_linkedin, 'http://www.linkedin.com/groups/Skyreal-Real-Estate-Marketing-4926740') %>" class="iconify"><i class="icon-linkedin"></i></a>
+    <a href="<%= ::Refinery::Setting.find_or_set(:social_googleplus, 'http://www.linkedin.com/groups/Skyreal-Real-Estate-Marketing-4926740') %>" class="iconify"><i class="icon-google-plus"></i></a>
+    <a href="<%= ::Refinery::Setting.find_or_set(:social_twitter, 'http://www.twitter.com/skyrealre') %>" class="iconify"><i class="icon-twitter"></i></a>
+    <a href="<%= ::Refinery::Setting.find_or_set(:social_facebook, 'http://www.facebook.com/skyrealre') %>" class="iconify"><i class="icon-facebook"></i></a>
+  </div>
+
+  <h4 class="title grey">Find Us</h4>
+  <img  src="http://maps.google.com/maps/api/staticmap?markers=<%= ::Refinery::Setting.find_or_set(:contact_address, '505 106th Avenue Northeast Bellevue Washington 98004, USA') %>&size=300x300&sensor=false" 
+              alt="map" class="img-rounded tooltips"  data-original-title="View our location">        
+        
+
+<% end %>
+<%= render :partial => "/refinery/content_page" %>
