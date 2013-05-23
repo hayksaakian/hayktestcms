@@ -9,7 +9,7 @@
 			<div class="span3">
 				<h4 class="title"><i class="icon-cogs"></i> <a href="/about">About</a> Us</h4>
 				<div class="margin-bottom-10">
-				We are a top real estate lead generation company in Washington. Our team consists of experts that have practiced internet marketing for over 6 years. Our staff loves what we do and would be happy to share our results with you. Contact us at your earliest convenience and watch your sales sky rocket. 
+					<%= ::Refinery::Setting.find_or_set(:about_us_snippet, "We are a top real estate lead generation company in Washington. Our team consists of experts that have practiced internet marketing for over 6 years. Our staff loves what we do and would be happy to share our results with you. Contact us at your earliest convenience and watch your sales sky rocket.") %>
 				</div>
 			</div>	
 
@@ -43,10 +43,10 @@
 				</form>	
 				<h4 class="title"><i class="icon-heart"></i> Stay Tuned</h4>
 				<div class="clearfix">							
-					<a href="http://www.linkedin.com/groups/Skyreal-Real-Estate-Marketing-4926740" class="iconify"><i class="icon-linkedin"></i></a>
-					<a href="#" class="iconify"><i class="icon-google-plus"></i></a>
-					<a href="https://twitter.com/skyrealre" class="iconify"><i class="icon-twitter"></i></a>
-					<a href="https://www.facebook.com/skyrealRE" class="iconify"><i class="icon-facebook"></i></a>
+					<a href="<%= ::Refinery::Setting.find_or_set(:social_linkedin, 'http://www.linkedin.com/groups/Skyreal-Real-Estate-Marketing-4926740') %>" class="iconify"><i class="icon-linkedin"></i></a>
+					<a href="<%= ::Refinery::Setting.find_or_set(:social_googleplus, 'http://www.facebook.com/skyrealre') %>" class="iconify"><i class="icon-google-plus"></i></a>
+					<a href="<%= ::Refinery::Setting.find_or_set(:social_twitter, 'http://www.twitter.com/skyrealre') %>" class="iconify"><i class="icon-twitter"></i></a>
+					<a href="<%= ::Refinery::Setting.find_or_set(:social_facebook, 'http://www.facebook.com/skyrealre') %>" class="iconify"><i class="icon-facebook"></i></a>
 <!-- <a href="#" class="iconify"><i class="icon-pinterest"></i></a>
 					<a href="#" class="iconify"><i class="icon-github"></i></a> -->
 				</div>	
@@ -61,13 +61,24 @@
 		<div class="row-fluid margin-top-20">
 			<div class="span12">						
 				<div id="quick-menu" class="span6 pull-right">						
-					<ul class="menu white pull-right">
+					<ul id="footer_menu" class="menu white pull-right">
 						<li><a href="/refinery" rel="nofollow">Admin</a></li>
-						<li><a href="/">Home</a></li>
-						<li><a href="/services">Services</a></li>
-						<li><a href="/about">About</a></li>
-						<!-- <li><a href="blog.html">Blog</a></li> -->
-						<li><a href="<%= refinery.inquiries_new_inquiry_path %>">Contact</a></li>
+						<%
+  # Collect the root items.
+  # ::Refinery::Menu is smart enough to remember all of the items in the original collection.
+  if (roots = local_assigns[:roots] || (collection ||= refinery_menu_pages).roots).present?
+    dom_id ||= 'footer_menu'
+    css = [(css || 'menu clearfix')].flatten.join(' ')
+    hide_children = true
+-%>
+						<%= render :partial => '/refinery/menu_branch', :collection => roots,
+                 :locals => {
+                   :hide_children => hide_children,
+                   :sibling_count => (roots.length - 1),
+                   :menu_levels => local_assigns[:menu_levels],
+                   :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
+                 } -%>       
+<% end -%>
 					</ul>
 				</div><!-- /quick-menu -->
 				<div id="copyright" class="span6 pull-left">
