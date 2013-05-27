@@ -10,7 +10,7 @@
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
   <%= yield :meta %>
   <%= google_webfonts_init({google: ['Oswald', 'Open Sans', 'Quick Sand']}) %>
-  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= yield :stylesheets %>
 
   <%= render '/refinery/google_analytics' %>

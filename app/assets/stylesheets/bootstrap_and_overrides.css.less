@@ -31,34 +31,30 @@
 // @linkColor: #ff0000;
 
 /*@testColor: #ff0000;*/
-section#body_content {
-  #grid > .fluid > .row-fluid;
-	h1#body_content_title {
-    #grid > .fluid > .row-fluid;
-		/*color: @testColor;*/
+#content_page {
+  /*#grid > .fluid(@gridColumnWidth, @gridGutterWidth);*/
+	section#body_content {
+    /*#grid > .fluid > .row-fluid;*/
+		h1#body_content_title {
+	    #grid > .fluid > .row-fluid;
+		}
+		section#body_content_left,
+		section#body {
+	    #grid > .fluid > .span(9);
+	    float: left;
+		}
+		section#body_content_right,
+		section#side_body {
+	    #grid > .fluid > .span(3);
+	    float: right;
+		}
 	}
-/*	section#body {
-    #grid > .fluid > .span(8);
-	}
-	section#side_body {
-    #grid > .fluid > .span(3);
-	}*/
-	section#body_content_left,
-	section#body {
-    #grid > .fluid > .span(9);
-    float: left;
-	}
-	section#body_content_right,
-	section#side_body {
-    #grid > .fluid > .span(3);
-    float: right;
-	}
-}
 
-section#body_content.no_body_content_right section#body_content_left,
-section#body_content.no_side_body section#body {
-  #grid > .fluid > .span(12);
-  float: left;
+	section#body_content.no_body_content_right section#body_content_left,
+	section#body_content.no_side_body section#body {
+	  #grid > .fluid > .span(12);
+	  float: left;
+	}
 }
 
 input[name="commit"] {
