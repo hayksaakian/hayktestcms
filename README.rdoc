@@ -1,19 +1,24 @@
 todo:
-style/polish contact page
 set up a caching service
 move domain
-re-do join page? (or move to the wix site)
+.. re-do join page? (or move to the wix site)
 
 done:
+added squeeze page layout
+style/polish contact page
 testing:
 - inquiries
   (TODO: set domain when done, on mailgun and in configs)
--   
+- blog posting
+- blog comments
+- 
+dynamising footer content
+- and social links
 favicons/etc.
 search
 set s3 keys
 - test file upload (dragonfly?)
-√ install page-images
+ install page-images
 - broke in prod
 fixed with:
   https://devcenter.heroku.com/articles/labs-user-env-compile
