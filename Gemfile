@@ -18,7 +18,6 @@ group :production do
 end
 
 gem 'newrelic_rpm'
-gem 'memcached'
 gem 'dalli'
 
 # Gems used only for assets and not required
