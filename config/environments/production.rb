@@ -16,15 +16,18 @@ PianoPlus::Application.configure do
   }
   config.action_mailer.delivery_method = :smtp
 
+  # Use a different cache store in production
+  # config.cache_store = :dalli_store, ENV["MEMCACHIER_SERVERS"].split(","), 
+  #   {:usermame => ENV["MEMCACHIER_USERNAME"], 
+  #   :password => ENV["MEMCACHIER_PASSWORD"]}
+  config.cache_store = :dalli_store
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-
-  # Use a different cache store in production
-  config.cache_store = :dalli_store, ENV["MEMCACHIER_SERVERS"].split(","), {:usermame => ENV["MEMCACHIER_USERNAME"], :password => ENV["MEMCACHIER_PASSWORD"]}
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false

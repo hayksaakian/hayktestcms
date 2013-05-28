@@ -18,7 +18,9 @@ group :production do
 end
 
 gem 'newrelic_rpm'
+gem 'memcachier' # auto sets dalli based on env hash
 gem 'dalli'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
