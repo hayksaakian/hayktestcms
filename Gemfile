@@ -15,6 +15,7 @@ end
 group :production do
   gem 'pg'
   gem 'fog'
+  gem 'heroku-deflater'
 end
 
 gem 'newrelic_rpm'
