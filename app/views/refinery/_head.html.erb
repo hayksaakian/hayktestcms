@@ -6,6 +6,7 @@
   <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
   <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
   <meta property="twitter:account_id" content="<%= ::Refinery::Setting.find_or_set(:twitter_analytics_account_id, "252474636") %>" />
+  <meta name="google-site-verification" content="lds_3OyS1BEKt_KPCnaQjwD7e1czZJ5XOOo6nAxrvp4" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
