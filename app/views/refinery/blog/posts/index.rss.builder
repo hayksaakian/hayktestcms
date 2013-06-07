@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
     @posts.each do |post|
       xml.item do
         if post.images.any?
-          xml.enclosure  :url => "#{request.protocol}#{request.host}#{post.images.first.url}", :type => post.images.first.mime_type, :length => post.images.first.size
+          xml.enclosure  :url => post.images.first.url(:host => request.host, :protocol => request.protocol), :type => post.images.first.mime_type, :length => post.images.first.size
         end
         xml.title post.title
         xml.description post.body
