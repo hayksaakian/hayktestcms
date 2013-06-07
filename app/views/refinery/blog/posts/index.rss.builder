@@ -7,6 +7,9 @@ xml.rss :version => "2.0" do
 
     @posts.each do |post|
       xml.item do
+        if post.images.any?
+          xml.enclosure  :url => post.images.first.url, :type => post.images.first.mime_type, :length => post.images.first.size
+        end
         xml.title post.title
         xml.description post.body
         xml.pubDate post.published_at.to_s(:rfc822)
