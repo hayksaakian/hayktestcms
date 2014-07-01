@@ -62,9 +62,9 @@ gem 'refinerycms', '~> 2.0.0', :git => 'git://github.com/refinery/refinerycms.gi
 
 # Specify additional Refinery CMS Extensions here (all optional):
 gem 'refinerycms-i18n', '~> 2.0.0'
-gem "refinerycms-blog", :git => "git://github.com/resolve/refinerycms-blog.git", :branch => "2-0-stable"
-gem "refinerycms-inquiries", :git => "git://github.com/resolve/refinerycms-inquiries.git", :branch => "2-0-stable"
+gem "refinerycms-blog", :git => "git://github.com/refinery/refinerycms-blog.git", :branch => "2-0-stable"
+gem "refinerycms-inquiries", :git => "git://github.com/refinery/refinerycms-inquiries.git", :branch => "2-0-stable"
 # gem 'refinerycms-inquiries', '~> 2.0.0'
 # gem 'refinerycms-search', '~> 2.0.0'
 gem 'refinerycms-search', '~> 2.0.0', :git => 'git://github.com/refinery/refinerycms-search.git', :branch => '2-0-stable'
-gem "refinerycms-page-images", :git => "git://github.com/resolve/refinerycms-page-images.git", :branch => "2-0-stable"
+gem "refinerycms-page-images", :git => "git://github.com/refinery/refinerycms-page-images.git", :branch => "2-0-stable"
