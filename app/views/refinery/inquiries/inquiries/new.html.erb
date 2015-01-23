@@ -3,7 +3,7 @@
 
   <div class="span5">
     <h4 class="title grey">Contact Info</h4>
-    <p><strong><%= Refinery::Core.site_name %></strong></p>
+    <p><strong><%= ::Refinery::Setting.find_or_set(:company_name, "Skyreal") %></strong></p>
     <p><%= ::Refinery::Setting.find_or_set(:contact_address, "505 106th Avenue Northeast Bellevue Washington 98004, USA") %></p>
     <p>Phone: <a href="tel:<%= ::Refinery::Setting.find_or_set(:contact_phone, "206-458-9112") %>" class=""><%= ::Refinery::Setting.find_or_set(:contact_phone, "206-458-9112") %></a><br></p>
     <p>Email: <a href="mailto:<%= ::Refinery::Setting.find_or_set(:contact_email, 'contact@skyrealre.com') %>" class=""><%= ::Refinery::Setting.find_or_set(:contact_email, 'contact@skyrealre.com') %></a></p>
