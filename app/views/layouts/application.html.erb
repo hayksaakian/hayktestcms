@@ -9,7 +9,11 @@
       <%= render '/refinery/header' -%>
     </header>
     <% if @page && !@page.content_for(:precontent).blank? %>
-      <%= raw @page.content_for(:precontent) %>
+      <% if @page.title == "Home" or @page.id.to_i == 1 %>
+        <%= render :template => "/refinery/dynamic_home" %>
+      <% else %>
+        <%= raw @page.content_for(:precontent) %>
+      <% end %>
     <% else %>
     <div id='content-title'>
       <div class='container'>
