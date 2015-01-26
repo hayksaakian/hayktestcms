@@ -12,7 +12,7 @@
         <% if blog_post.images.any? %>
           <%= link_to image_tag(blog_post.images.first.thumbnail("600x450#c").url, alt: blog_post.title), refinery.blog_post_path(blog_post) %>
         <% else %>
-          <img src="/assets/work<%= no_img_counter %>.jpg" alt="men shaking hands" />
+          <%= link_to image_tag("/assets/work#{no_img_counter}.jpg", alt: blog_post.title), refinery.blog_post_path(blog_post) %>
           <% no_img_counter += 1 %>
         <% end %>
       </div>
