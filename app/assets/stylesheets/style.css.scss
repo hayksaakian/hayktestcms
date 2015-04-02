@@ -195,7 +195,11 @@ a.top:hover {color: #fff; border-bottom: 2px #fff dotted; text-decoration: none}
 
 #latest_work {margin: 20px 0 20px 0; margin-bottom: 30px;}
 
-.work {margin-bottom: 5px !important; overflow: hidden}
+.work {
+margin-bottom: 5px !important; 
+overflow: hidden;
+position: relative;
+}
 .work .desc{
   opacity: 0.9;
   filter: alpha(opacity = 90); 
